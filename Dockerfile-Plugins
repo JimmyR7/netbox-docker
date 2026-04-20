@@ -1,0 +1,12 @@
+FROM netboxcommunity/netbox:v4.5.1
+# Копируем файл .whl в контейнер
+COPY netbox_topology_views-4.5.1-py3-none-any.whl /opt/netbox/
+# Устанавливаем плагин из файла .whl
+RUN /usr/local/bin/uv pip install /opt/netbox/netbox_topology_views-4.5.1-py3-none-any.whl
+# Эти строки остаются для копирования конфигурации и сбора статики
+COPY configuration/configuration.py /etc/netbox/config/configuration.py
+COPY configuration/plugins.py /etc/netbox/config/plugins.py
+# Создаем директорию для изображений плагина, как указано в документации
+RUN mkdir -p /opt/netbox/netbox/static/netbox_topology_views/img
+RUN DEBUG="true" SECRET_KEY="dummydummydummydummydummydummydummydummydummydummy" \
+/opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py collectstatic --no-input

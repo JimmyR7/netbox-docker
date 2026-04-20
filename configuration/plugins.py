@@ -1,13 +1,12 @@
-# Add your plugins and plugin settings here.
-# Of course uncomment this file out.
+# Включаем плагин в список активных
+PLUGINS = ['netbox_topology_views']
 
-# To learn how to build images with your required plugins
-# See https://github.com/netbox-community/netbox-docker/wiki/Using-Netbox-Plugins
+# Настраиваем плагин
+PLUGINS_CONFIG = {
+    'netbox_topology_views': {
+        'static_image_directory': 'netbox_topology_views/img',
+        'allow_coordinates_saving': True,
+        'always_save_coordinates': False
+    },
+}
 
-# PLUGINS = ["netbox_bgp"]
-
-# PLUGINS_CONFIG = {
-#   "netbox_bgp": {
-#     ADD YOUR SETTINGS HERE
-#   }
-# }
