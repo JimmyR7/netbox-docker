@@ -37,7 +37,7 @@ To get _NetBox Docker_ up and running run the following commands.
 There is a more complete [_Getting Started_ guide on our wiki][wiki-getting-started] which explains every step.
 
 ```bash
-git clone -b release https://github.com/netbox-community/netbox-docker.git
+git clone -b release https://github.com/JimmyR7/netbox-docker.git
 cd netbox-docker
 # Copy the example override file
 cp docker-compose.override.yml.example docker-compose.override.yml
